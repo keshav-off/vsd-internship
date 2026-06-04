@@ -6,8 +6,6 @@
 **College**: The LNM institue of information technology
 
 **Email**: keshav.soni.off@gmail.com
-
-**Git Profile**: keshav-off
 ##
 
 ## Tasks
