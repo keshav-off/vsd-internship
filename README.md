@@ -10,4 +10,4 @@
 
 ## Tasks
 
-**Task 1**: Compilation of C Program using GCC, SPIKE and RISC-V GCC Compile
+**Task 1**: From C to RISC-V: Compilation Flow and Optimization Analysis
