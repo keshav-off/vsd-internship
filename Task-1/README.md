@@ -232,7 +232,6 @@ At `-Ofast`, the compiler aggressively transforms the loop, producing fewer inst
 | Runtime operations | More | Fewer |
 | Code readability | Higher | Lower |
 | Execution speed | Fast | Fastest |
-| Binary size | 167512 bytes | 167512 bytes |
 
 ---
 
