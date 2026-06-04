@@ -3,7 +3,7 @@
 ## basic details 
 **Name**: Keshav Soni
 
-**College**: The LNM institue of information technology
+**College**: The LNM institute of information technology
 
 **Email**: keshav.soni.off@gmail.com
 ##
