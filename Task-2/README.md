@@ -397,6 +397,12 @@ riscv64-unknown-elf-objdump -d uni_shift_reg.o
 
 <img width="1920" height="1080" alt="Screenshot 2026-06-08 011815" src="https://github.com/user-attachments/assets/a28b43ac-39f9-4de7-9df9-425e205f3d16" />
 
+**calculation:**
+```
+10334 - 10184 = 1B0
+1B0 / 4 = 6C (108 in dec)
+```
+
 **Key observations at `-O1`:**
 
 | Item | Detail |
@@ -427,6 +433,12 @@ riscv64-unknown-elf-objdump -d uni_shift_reg.o
 
 <img width="1920" height="1080" alt="Screenshot 2026-06-08 012040" src="https://github.com/user-attachments/assets/844d587a-bcbf-43a8-beff-55565b6a1afe" />
 
+**calculation:**
+```
+10278 - 100b0 = 1C8
+1C8 / 4 = 72 (114 in dec)
+```
+
 **Key observations at `-Ofast`:**
 
 | Item | Detail |
@@ -438,7 +450,7 @@ riscv64-unknown-elf-objdump -d uni_shift_reg.o
 | Switch handling | `bltu` bounds check + jump table |
 | Shift instructions | `slli`, `srli` used aggressively |
 | `puts` usage | Some `printf` calls replaced with `puts` |
-| **Total instructions** | **72** |
+| **Total instructions** | **114** |
 
 ---
 
@@ -452,8 +464,8 @@ riscv64-unknown-elf-objdump -d uni_shift_reg.o
 | Array zeroing | 4 × `sw zero` | 2 × `sd zero` |
 | Switch handling | Explicit per-case branches | Bounds check + jump table |
 | `printf` handling | All preserved | Some replaced with `puts` |
-| Total instructions | **108** | **72** |
-| Instruction reduction | — | **33% fewer** |
+| Total instructions | **108** | **114** |
+| Instruction reduction | — | **6% more** |
 | Binary size | 264560 bytes | 264592 bytes |
 
 ### Results and Verification
@@ -463,7 +475,7 @@ riscv64-unknown-elf-objdump -d uni_shift_reg.o
 | Part 1 | RISC-V `-O1` + Spike | 15 | Yes |
 | Part 1 | RISC-V `-Ofast` + Spike | 12 | Yes |
 | Part 2 | RISC-V `-O1` + Spike | 108 | Yes |
-| Part 2 | RISC-V `-Ofast` + Spike | 72 | Yes |
+| Part 2 | RISC-V `-Ofast` + Spike | 114 | Yes |
 
 ---
 
@@ -473,6 +485,6 @@ This task demonstrated two complementary aspects of RISC-V toolchain analysis.
 
 Part 1 used the Spike interactive debugger to inspect register state at the instruction level, confirming stack pointer behaviour (`0x7f7e9b50` → `0x7f7e9b40`), return address preservation, and loop counter loading. The `-Ofast` binary showed complete loop elimination through constant folding, reducing `main` from 15 to 12 instructions.
 
-Part 2 demonstrated a stateful, multi-branch program — the Universal Shift Register — producing a 33% instruction reduction from 108 (`-O1`) to 72 (`-Ofast`) through switch restructuring, `printf`-to-`puts` substitution, double-word initialisation, and aggressive shift instruction usage. The dead code elimination experiment further confirmed that the compiler discards redundant assignments independently of the programmer.
+Part 2 demonstrated simulation of a 4-bit Universal Shift Register compiled for RISC-V. Contrary to expectation, -Ofast produced 114 instructions compared to 108 at -O1. This increase is due to aggressive function inlining and loop unrolling applied to the switch-case structure, where the compiler prioritizes execution speed over code size rather than minimizing instruction count.
 
 Together, both parts provide a thorough understanding of how the RISC-V GCC toolchain transforms C programs at the assembly level across different optimization settings.
