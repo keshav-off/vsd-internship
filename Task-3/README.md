@@ -43,7 +43,7 @@ The reference C program `sum1ton.c` is located in the `samples/` directory of th
 #include <stdio.h>
 
 int main(){
-    int i, sum=0, n=100;
+    int i, sum=0, n=9;
     for(i=1;i<=n;i++)
         sum = sum + i;
     printf("Sum from 1 to %d is %d \n", n, sum);
