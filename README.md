@@ -19,3 +19,5 @@
 **Task 4**: Design and Integrate a Memory-Mapped GPIO Output IP
 
 **Task 5**: Design a Multi-Register GPIO IP with Software Control
+
+**Task 6**: Custom Timer IP
