@@ -4,10 +4,7 @@
 
 Design a memory-mapped Timer IP supporting one-shot mode, periodic (auto-reload) mode, and status write-1-to-clear (W1C) behavior, integrate it into the existing RISC-V SoC, and validate all three modes through simulation.
 
-> **Reference:** The timer IP architecture and register map were studied from 
-> [vsdip/vsdsquadron-fpga-ip-timer](https://github.com/vsdip/vsdsquadron-fpga-ip-timer) 
-> as a design reference. The RTL, firmware, and integration were independently 
-> implemented and adapted for this SoC environment.
+
 ---
 
 ## Register Map
