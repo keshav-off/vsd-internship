@@ -17,3 +17,5 @@
 **Task 3**: Environment Setup & RISC-V Reference Bring-Up
 
 **Task 4**: Design and Integrate a Memory-Mapped GPIO Output IP
+
+**Task 5**: Design a Multi-Register GPIO IP with Software Control
